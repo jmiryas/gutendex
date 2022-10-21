@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:gutendex/data/models/book_model.dart';
 
 import '../bloc/gutendex_bloc.dart';
+import '../widgets/gutendex_widget.dart';
 
 class GutendexPage extends StatelessWidget {
   const GutendexPage({super.key});
@@ -27,54 +26,10 @@ class GutendexPage extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         } else if (state is GutendexLoadedState) {
-          widget = CustomScrollView(
-            slivers: [
-              SliverPadding(
-                padding: const EdgeInsets.all(20.0),
-                sliver: SliverGrid(
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 200,
-                    mainAxisExtent: 200,
-                    crossAxisSpacing: 20.0,
-                    mainAxisSpacing: 20.0,
-                    childAspectRatio: 1,
-                  ),
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                      BookModel book = state.bookList.results[index];
-
-                      return Container(
-                        color: Colors.blueGrey.shade200,
-                        child: CachedNetworkImage(
-                          imageUrl: book.formats.imageJpeg,
-                          imageBuilder: (context, imageProvider) => Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: imageProvider,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                          placeholder: (context, url) => const Center(
-                            child: SizedBox(
-                              width: 20.0,
-                              height: 20.0,
-                              child: CircularProgressIndicator(),
-                            ),
-                          ),
-                          errorWidget: (context, url, error) => const Center(
-                            child: SizedBox(
-                              child: Icon(Icons.error),
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                    childCount: state.bookList.results.length,
-                  ),
-                ),
-              ),
-            ],
+          widget = GutendexWidget(
+            books: state.bookList.results,
+            previousUrl: state.bookList.previous,
+            nextUrl: state.bookList.next,
           );
         } else if (state is GutendexErrorState) {
           widget = Center(

@@ -64,9 +64,9 @@ class AuthorModel extends AuthorEntity {
 
   factory AuthorModel.fromJson(Map<String, dynamic> json) {
     return AuthorModel(
-      name: json["name"],
-      birthYear: json["birth_year"],
-      deathYear: json["death_year"],
+      name: json["name"] ?? "",
+      birthYear: json["birth_year"] ?? 0,
+      deathYear: json["death_year"] ?? 0,
     );
   }
 }
