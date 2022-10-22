@@ -16,8 +16,10 @@ dependencies:
   dartz: ^0.10.1
   get_it: ^7.2.0
   equatable: ^2.0.5
+  url_launcher: ^6.1.6
   flutter_bloc: ^8.1.1
   cupertino_icons: ^1.0.2
+  language_picker: ^0.4.1
   cached_network_image: ^3.2.2
   internet_connection_checker: ^1.0.0+1
 

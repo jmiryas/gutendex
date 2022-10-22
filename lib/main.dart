@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'service_locator.dart';
@@ -6,10 +7,15 @@ import 'core/constants/constants.dart';
 import 'presentation/bloc/gutendex_bloc.dart';
 import 'presentation/pages/gutendex_page.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  initializeServiceLocator().then(
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
+  await initializeServiceLocator().then(
     (_) => runApp(
       MultiBlocProvider(
         providers: [

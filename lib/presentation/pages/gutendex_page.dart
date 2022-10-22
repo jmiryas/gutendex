@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gutendex/presentation/widgets/alert_dialog_widget.dart';
 
 import '../bloc/gutendex_bloc.dart';
 import '../widgets/gutendex_widget.dart';
@@ -24,6 +25,26 @@ class GutendexPage extends StatelessWidget {
         ),
         centerTitle: true,
         title: const Text("Gutendex"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: ((context) {
+                    return const AlertDialogWidget(
+                      title: "Tentang Aplikasi",
+                      height: 100.0,
+                      children: [
+                        Text(
+                          "Aplikasi ini menampilkan buku-buku yang berasal dari website Project Gutenberg.",
+                        ),
+                      ],
+                    );
+                  }));
+            },
+            icon: const Icon(Icons.info),
+          ),
+        ],
       ),
       body: BlocBuilder<GutendexBloc, GutendexState>(builder: (context, state) {
         late Widget widget;

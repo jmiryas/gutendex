@@ -16,7 +16,7 @@ class ButtonWidget extends StatelessWidget {
       onTap: onTap,
       child: Container(
         color: Colors.blue,
-        height: 30.0,
+        height: 40.0,
         child: Center(
           child: Text(
             label,
