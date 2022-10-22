@@ -1,16 +1,9 @@
-# gutendex
+# Gutendex
 
-A new Flutter project.
+Sebuah aplikasi untuk menampilkan buku-buku yang berasal dari Project Gutenberg.
 
-## Getting Started
+## API
 
-This project is a starting point for a Flutter application.
+Berikut adalah API yang digunakan:
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [Gutendex API](https://gutendex.com/)
